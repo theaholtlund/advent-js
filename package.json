@@ -1,0 +1,12 @@
+{
+  "name": "advent-of-js",
+  "version": "1.0.0",
+  "description": "Code to solve the various challenges for the Advent JS calendar",
+  "main": "day-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Thea Holtlund Jacobsen",
+  "license": "ISC"
+}
