@@ -11,6 +11,7 @@ Hobby project with various solutions to the Advent JS 2023 challenges. Challenge
 ## Usage
 
 Run the solution for a specific day using the following command:
+
 > `node day-1.js`
 
 Replace `day-1.js` with the corresponding file for the challenge you want to solve. Inputs have to be added manually if running the code directly from your local terminal.
