@@ -12,7 +12,6 @@ function cyberReindeer(road, time) {
     let sledIndex = currentRoad.indexOf("S");
     currentRoad[sledIndex] = ".";
     sledIndex = (sledIndex + 1) % currentRoad.length;
-    currentRoad[sledIndex] = "S";
 
     // Check and open barriers every 5 units of time
     if (t % 5 === 0) {
@@ -21,6 +20,15 @@ function cyberReindeer(road, time) {
           currentRoad[i] = "*";
         }
       }
+    }
+
+    // Check if the next position is a closed barrier
+    if (currentRoad[sledIndex] === "|") {
+      // Sled stops at the closed barrier
+      currentRoad[sledIndex] = "S";
+    } else {
+      // Move sled to the right
+      currentRoad[sledIndex] = "S";
     }
 
     result.push(currentRoad.join(""));
