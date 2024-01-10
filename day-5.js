@@ -23,8 +23,8 @@ function cyberReindeer(road, time) {
     }
 
     // Check if the next position is a closed barrier
-    if (currentRoad[sledIndex] === "|") {
-      // Sled stops at the closed barrier
+    if (t % 5 !== 0 && currentRoad[sledIndex] === "|") {
+      // Sled stops at the closed barrier, but only for the first 4 units of time
       currentRoad[sledIndex] = "S";
     } else {
       // Move sled to the right
