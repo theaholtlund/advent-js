@@ -1,43 +1,47 @@
 // Advent JavaScript 2023, Day 5
 
-// Challenge: Santa's CyberTruck
-// Objective: Create a function that simulates the sled's movement and returns an array of strings representing the state of the road
+/**
+ * Challenge: Santa's CyberTruck
+ * Objective: Create a function that simulates the sled's movement, returning representation of the road state
+functio
+ * @param {string} road - The character currently on the road, could be '.', 'S', '|', or '*'.
+ * @param {number} time - The given unit of time for the sled to simulate.
+ * @return {string[]} - An array that gives the state of the road for each unit of time.
+ */
 function cyberReindeer(road, time) {
   const result = [road];
+  let sledIndex = road.indexOf("S");
+  let originalChar = ".";
 
-  for (let t = 1; t <= time; t++) {
-    const currentRoad = result[t - 1].split("");
+  // Iterate for each unit of time, minus one, since the initial state is already included
+  for (let i = 0; i < time - 1; i++) {
+    let currentRoad = result[i];
 
-    // Move the sled to the right
-    let sledIndex = currentRoad.indexOf("S");
-    currentRoad[sledIndex] = ".";
-    sledIndex = (sledIndex + 1) % currentRoad.length;
-
-    // Check and open barriers every 5 units of time
-    if (t % 5 === 0) {
-      for (let i = 0; i < currentRoad.length; i++) {
-        if (currentRoad[i] === "|") {
-          currentRoad[i] = "*";
-        }
-      }
+    // On the fifth iteration (unit of time 5), all barriers open
+    if (i === 4) {
+      currentRoad = currentRoad.replace(/[|]/g, "*");
     }
 
-    // Check if the next position is a closed barrier
-    if (currentRoad[sledIndex] === "|") {
-      if (t % 5 === 0) {
-        // Barrier opens after 5 units of time
-        currentRoad[sledIndex] = "*";
-      } else {
-        // Sled waits in front of the closed barrier
-        currentRoad[sledIndex - 1] = "S";
-      }
-    } else {
-      // Move sled to the right
-      currentRoad[sledIndex] = "S";
+    // Check if the next position of the sled is not a closed barrier
+    if (currentRoad[sledIndex + 1] !== "|") {
+      const newSledIndex = `${originalChar}S`; // Prepare the new sled position
+
+      // Update the character replaced by the sled before being replaced
+      originalChar = currentRoad[sledIndex + 1];
+
+      // Build the new state of the road with the sled moved one position
+      const beginningRoad = currentRoad.substring(0, sledIndex);
+      const endRoad = currentRoad.substring(sledIndex + 2);
+      currentRoad = beginningRoad + newSledIndex + endRoad;
+
+      // Update the sled position
+      sledIndex += 1;
     }
 
-    result.push(currentRoad.join(""));
+    // Add the updated state of the road to the array
+    result.push(currentRoad);
   }
 
+  // Return the array with the state of the road at each unit of time
   return result;
 }
