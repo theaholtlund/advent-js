@@ -1,4 +1,4 @@
-// Advent JavaScript 2023, Day 4
+// Advent JavaScript 2023, Day 5
 
 // Challenge: Santa's CyberTruck
 // Objective: Create a function that simulates the sled's movement and returns an array of strings representing the state of the road
@@ -23,9 +23,14 @@ function cyberReindeer(road, time) {
     }
 
     // Check if the next position is a closed barrier
-    if (t % 5 !== 0 && currentRoad[sledIndex] === "|") {
-      // Sled stops at the closed barrier, but only for the first 4 units of time
-      currentRoad[sledIndex] = "S";
+    if (currentRoad[sledIndex] === "|") {
+      if (t % 5 === 0) {
+        // Barrier opens after 5 units of time
+        currentRoad[sledIndex] = "*";
+      } else {
+        // Sled stops at the closed barrier, but only for the first 4 units of time
+        currentRoad[sledIndex] = "S";
+      }
     } else {
       // Move sled to the right
       currentRoad[sledIndex] = "S";
