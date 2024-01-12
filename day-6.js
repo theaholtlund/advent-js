@@ -2,7 +2,7 @@
 
 /**
  * Challenge: The Reindeer on Trial
- * Objective: Create simulation of sled's movement, returning representation of the road state
+ * Objective: Find maximum distance the reindeer can travel in any direction.
  *
  * @param {string} movements - Characters representing the direction of reindeer's movement.
  * @return {number} - Value of the maximum distance that the reindeer can travel in any direction.
