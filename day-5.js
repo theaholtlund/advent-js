@@ -28,8 +28,8 @@ function cyberReindeer(road, time) {
         // Barrier opens after 5 units of time
         currentRoad[sledIndex] = "*";
       } else {
-        // Sled stops at the closed barrier, but only for the first 4 units of time
-        currentRoad[sledIndex] = "S";
+        // Sled waits in front of the closed barrier
+        currentRoad[sledIndex - 1] = "S";
       }
     } else {
       // Move sled to the right
