@@ -1,11 +1,11 @@
 // Advent JavaScript 2023, Day 6
 
 /**
- * Challenge: The Reindeer on Trial
+ * Challenge: The reindeer on trial
  * Objective: Find maximum distance the reindeer can travel in any direction
  *
- * @param {string} movements - Characters representing the direction of reindeer's movement
- * @return {number} - Value of the maximum distance that the reindeer can travel in any direction
+ * @param {string} movements - Characters representing direction of reindeer's movement
+ * @return {number} - Value of maximum distance that the reindeer can travel in any direction
  */
 function maxDistance(movements) {
   // Initialise counters for movements

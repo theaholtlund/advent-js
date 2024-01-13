@@ -1,19 +1,18 @@
 // Advent JavaScript 2023, Day 7
 
 /**
- * Challenge: The 3D Boxes
- * Objective: Generate drawing of 3D gift using ASCII characters, given integer size and symbol for the faces
+ * Challenge: The 3D boxes
+ * Objective: Generate drawing of 3D gift using ASCII characters, given integer size and symbol for faces
  *
- * @param {number} size - Integer representing the size of the 3D gift
- * @param {string} symbol - Character representing the symbol used for the faces of the 3D gift
- * @return {string} - String representing the ASCII art of the 3D gift
+ * @param {number} size - Integer representing size of the 3D gift
+ * @param {string} symbol - Character representing symbol used for faces of the 3D gift
+ * @return {string} - String representing ASCII art of the 3D gift
  */
 function drawGift(size, symbol) {
-  // Constants for wrapper and space characters
   const wrapper = "#";
   const space = " ";
 
-  // Base case: If the size is 1 or less, return a simple wrapper
+  // If the size is 1 or less, return a simple wrapper
   if (size <= 1) return `${wrapper}\n`;
 
   // Initialise an empty string to store the ASCII art of the 3D gift
