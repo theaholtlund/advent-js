@@ -2,12 +2,13 @@
 
 /**
  * Challenge: The Reindeer on Trial
- * Objective: Find maximum distance the reindeer can travel in any direction.
+ * Objective: Find maximum distance the reindeer can travel in any direction
  *
- * @param {string} movements - Characters representing the direction of reindeer's movement.
- * @return {number} - Value of the maximum distance that the reindeer can travel in any direction.
+ * @param {string} movements - Characters representing the direction of reindeer's movement
+ * @return {number} - Value of the maximum distance that the reindeer can travel in any direction
  */
 function maxDistance(movements) {
+  // Initialise counters for movements
   let leftCount = 0;
   let rightCount = 0;
   let anyDirectionCount = 0;

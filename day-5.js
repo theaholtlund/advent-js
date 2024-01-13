@@ -4,20 +4,20 @@
  * Challenge: Santa's CyberTruck
  * Objective: Create simulation of sled's movement, returning representation of the road state
  *
- * @param {string} road - The character currently on the road, could be '.', 'S', '|', or '*'.
- * @param {number} time - The given unit of time for the sled to simulate.
- * @return {string[]} - An array that gives the state of the road for each unit of time.
+ * @param {string} road - The character currently on the road, could be '.', 'S', '|', or '*'
+ * @param {number} time - The given unit of time for the sled to simulate
+ * @return {string[]} - An array that gives the state of the road for each unit of time
  */
 function cyberReindeer(road, time) {
   const result = [road];
   let sledIndex = road.indexOf("S");
   let originalChar = ".";
 
-  // Iterate for each unit of time, minus one, since the initial state is already included
+  // Iterate for each unit of time, minus one, since initial state is already included
   for (let i = 0; i < time - 1; i++) {
     let currentRoad = result[i];
 
-    // On the fifth iteration (unit of time 5), all barriers open
+    // On the fifth iteration, all barriers open
     if (i === 4) {
       currentRoad = currentRoad.replace(/[|]/g, "*");
     }

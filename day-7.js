@@ -2,11 +2,11 @@
 
 /**
  * Challenge: The 3D Boxes
- * Objective: Generate a drawing of a 3D gift using ASCII characters, given an integer size and a symbol for the faces.
+ * Objective: Generate drawing of 3D gift using ASCII characters, given integer size and symbol for the faces
  *
- * @param {number} size - Integer representing the size of the 3D gift.
- * @param {string} symbol - Character representing the symbol used for the faces of the 3D gift.
- * @return {string} - String representing the ASCII art of the 3D gift.
+ * @param {number} size - Integer representing the size of the 3D gift
+ * @param {string} symbol - Character representing the symbol used for the faces of the 3D gift
+ * @return {string} - String representing the ASCII art of the 3D gift
  */
 function drawGift(size, symbol) {
   // Constants for wrapper and space characters
@@ -28,7 +28,7 @@ function drawGift(size, symbol) {
     `${wrapper.repeat(size)}${symbol.repeat(Math.abs(size - 2))}` +
     `${wrapper}\n`;
 
-  // Loop to generate the top and bottom parts of the gift
+  // Loop to generate top and bottom parts of the gift
   for (let i = 1; i < size; i++) {
     // Construct line for each iteration
     const line =
@@ -46,7 +46,7 @@ function drawGift(size, symbol) {
   top.push(middle);
   bottom.reverse();
 
-  // Concatenate top and bottom arrays, join with line breaks and add newline to the end
+  // Concatenate top and bottom arrays, join with line breaks and add newline to end
   gift = `${top.join("\n")}${bottom.join("\n")}\n`;
 
   return gift;
