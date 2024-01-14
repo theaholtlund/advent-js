@@ -19,11 +19,11 @@ function createChristmasTree(ornaments, height) {
     const padding = " ".repeat(height - tier);
     let tierOrnaments = "";
 
-    // Append the current ornament to the tierOrnaments string
+    // Append the current ornament to the tier
     for (let i = 0; i < tier; i++) {
       tierOrnaments += ornaments[(currentPosition + i) % ornaments.length];
 
-      // Add a space between ornaments, except for the last one in tier
+      // Add a space between ornaments, except for last in tier
       if (i < tier - 1) {
         tierOrnaments += " ";
       }
@@ -36,6 +36,6 @@ function createChristmasTree(ornaments, height) {
     currentPosition = (currentPosition + tier) % ornaments.length;
   }
 
-  // Add the trunk (|) to the bottom of the tree with appropriate padding
+  // Add trunk to bottom of tree with the correct padding
   return tree + " ".repeat(height - 1) + "|\n";
 }
