@@ -5,10 +5,10 @@
  * Objective: Given array of strings with light colours, return minimum number of light changes for colors to alternate
  *
  * @param {string[]} lights - The array of lights
- * @return {number} Number of changes needed to organise the lights
+ * @return {number} - Number of changes needed to organise the lights
  */
 function adjustLights(lights) {
-  // Count changes starting with '🟢' as the first color
+  // Count changes starting with '🟢' as first color
   let changesWithGreen = 0;
   let currentColor = "🟢";
 
@@ -21,7 +21,7 @@ function adjustLights(lights) {
     currentColor = currentColor === "🔴" ? "🟢" : "🔴";
   }
 
-  // Count changes starting with '🔴' as the first color
+  // Count changes starting with '🔴' as first color
   let changesWithRed = 0;
   currentColor = "🔴";
 
