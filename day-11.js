@@ -26,11 +26,11 @@ function getIndexsForPalindrome(word) {
       [swappedWord[i], swappedWord[j]] = [swappedWord[j], swappedWord[i]];
 
       // Check if the new word is a palindrome
-      const left = swappedWord.slice(0, Math.floor(word.length / 2)).join("");
-      const right = swappedWord
-        .slice(Math.ceil(word.length / 2))
-        .reverse()
-        .join("");
+      const mid = Math.floor(word.length / 2);
+      const [left, right] = [
+        swappedWord.slice(0, mid),
+        swappedWord.slice(-mid).reverse(),
+      ].map((arr) => arr.join(""));
 
       // If the new word is a palindrome, set the result and break out of the loops
       if (left === right) {
@@ -45,6 +45,6 @@ function getIndexsForPalindrome(word) {
     }
   }
 
-  // Return the result (either the indices or null)
+  // Return the result, either the indices or null
   return result;
 }
