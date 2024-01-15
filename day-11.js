@@ -4,40 +4,47 @@
  * Challenge: The studious elves
  * Objective: Determine if a palindrome can be formed by making at most one exchange of letters
  *
- * @param {string} word - The input word
- * @returns {Array} - If already a palindrome, return an empty array
- *                    If not possible to form palindrome, return null
- *                    If palindrome can be formed with one change, return array with the two indexes to swap
+ * @param {string} word - The word to check for palindromic properties
+ * @return {number[] | null} - Array of two indices representing characters to be reversed, or null if no such indices exist
  */
 function getIndexsForPalindrome(word) {
-  const length = word.length;
-  let oddCount = 0;
-  let oddIndex = -1;
+  // Check if the given word is already a palindrome
+  const isPalindrome = (s) => s === s.split("").reverse().join("");
 
-  // Count number of characters with odd frequency and track the last odd index
-  const charCount = new Map();
-  for (let i = 0; i < length; i++) {
-    const char = word[i];
-    charCount.set(char, (charCount.get(char) || 0) + 1);
-
-    if (charCount.get(char) % 2 === 0) {
-      oddCount--;
-    } else {
-      oddCount++;
-      oddIndex = i;
-    }
-  }
-
-  // Check if forming palindrome is possible
-  if (oddCount > 1) {
-    return null;
-  }
-
-  // If already palindrome
-  if (oddCount === 0) {
+  // If the word is already a palindrome, return an empty array
+  if (isPalindrome(word)) {
     return [];
   }
 
-  // If palindrome can be formed with one change
-  return [oddIndex, oddIndex - 1];
+  let result = null;
+
+  // Iterate through all possible pairs of indices
+  for (let i = 0; i < word.length; i += 1) {
+    for (let j = i + 1; j < word.length; j += 1) {
+      // Create a new word by swapping the characters at indices i and j
+      const swappedWord = [...word];
+      [swappedWord[i], swappedWord[j]] = [swappedWord[j], swappedWord[i]];
+
+      // Check if the new word is a palindrome
+      const left = swappedWord.slice(0, Math.floor(word.length / 2)).join("");
+      const right = swappedWord
+        .slice(Math.ceil(word.length / 2))
+        .reverse()
+        .join("");
+
+      if (left === right) {
+        // If the new word is a palindrome, set the result and break out of the loops
+        result = [i, j];
+        break;
+      }
+    }
+
+    // Break out of the outer loop if a palindrome is found
+    if (result) {
+      break;
+    }
+  }
+
+  // Return the result (either the indices or null)
+  return result;
 }
