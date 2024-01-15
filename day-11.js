@@ -4,8 +4,8 @@
  * Challenge: The studious elves
  * Objective: Determine if a palindrome can be formed by making at most one exchange of letters
  *
- * @param {string} word - The word to check for palindromic properties
- * @return {number[] | null} - Array of two indices representing characters to be reversed, or null if no such indices exist
+ * @param {string} word - The input word to check for palindromic properties
+ * @return {number[] | null} - Returns array with two indices for palindrome creation or null if no such indices exist
  */
 function getIndexsForPalindrome(word) {
   // Check if the given word is already a palindrome
@@ -19,8 +19,8 @@ function getIndexsForPalindrome(word) {
   let result = null;
 
   // Iterate through all possible pairs of indices
-  for (let i = 0; i < word.length; i += 1) {
-    for (let j = i + 1; j < word.length; j += 1) {
+  for (let i = 0; i < word.length; i++) {
+    for (let j = i + 1; j < word.length; j++) {
       // Create a new word by swapping the characters at indices i and j
       const swappedWord = [...word];
       [swappedWord[i], swappedWord[j]] = [swappedWord[j], swappedWord[i]];
@@ -32,8 +32,8 @@ function getIndexsForPalindrome(word) {
         .reverse()
         .join("");
 
+      // If the new word is a palindrome, set the result and break out of the loops
       if (left === right) {
-        // If the new word is a palindrome, set the result and break out of the loops
         result = [i, j];
         break;
       }
