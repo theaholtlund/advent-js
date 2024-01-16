@@ -27,7 +27,7 @@ function checkIsValidCopy(original, copy) {
       }
     }
 
-    if (!isValid && originalChar !== copyChar) {
+    if (!isValid && originalChar.toLowerCase() !== copyChar.toLowerCase()) {
       return false;
     }
   }
