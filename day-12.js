@@ -19,15 +19,15 @@ function checkIsValidCopy(original, copy) {
 
     for (const degradationType of degradationOrder) {
       if (
-        degradationType.includes(originalChar) &&
-        degradationType.includes(copyChar)
+        degradationType.includes(originalChar.toLowerCase()) &&
+        degradationType.includes(copyChar.toLowerCase())
       ) {
         isValid = true;
         break;
       }
     }
 
-    if (!isValid && originalChar.toLowerCase() !== copyChar.toLowerCase()) {
+    if (!isValid && originalChar !== copyChar) {
       return false;
     }
   }
