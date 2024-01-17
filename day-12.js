@@ -9,32 +9,15 @@
  * @returns {boolean} - True if the copy is a valid copy of the original, false otherwise
  */
 function checkIsValidCopy(original, copy) {
-  const degradationOrder = ["a-z", "#", "+", ":", "."];
-
-  // Iterate through each character in the original and copy letters
   for (let i = 0; i < original.length; i++) {
-    const originalChar = original[i];
-    const copyChar = copy[i];
+    // Define valid characters based on degradation order
+    const validChars =
+      (original[i].match(/[a-zA-Z]/)
+        ? original[i] + original[i].toLowerCase()
+        : "") + "#+:. ";
 
-    let isValid = false;
-
-    // Check if characters are equal or the degradation is valid
-    if (originalChar === copyChar) {
-      isValid = true;
-    } else {
-      for (const degradationType of degradationOrder) {
-        if (
-          degradationType.includes(originalChar.toLowerCase()) &&
-          degradationType.includes(copyChar.toLowerCase())
-        ) {
-          isValid = true;
-          break;
-        }
-      }
-    }
-
-    // If characters are not valid or equal, return false
-    if (!isValid) {
+    // Check if the copy character is in a valid position in the degradation order
+    if (validChars.indexOf(copy[i]) < validChars.indexOf(original[i])) {
       return false;
     }
   }
