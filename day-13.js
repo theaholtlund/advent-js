@@ -8,26 +8,33 @@
  * @return {string} - The time difference between 07:00:00 and the total duration of deliveries
  */
 function calculateTime(deliveries) {
-  // Convert delivery durations to seconds
-  const totalSeconds = deliveries.reduce((acc, duration) => {
-    const [hours, minutes, seconds] = duration.split(":").map(Number);
-    return acc + hours * 3600 + minutes * 60 + seconds;
-  }, 0);
+  let seconds = -(7 * 3600);
 
-  // Calculate remaining time in seconds
-  const remainingSeconds = 7 * 3600 - totalSeconds;
+  // Iterate through each delivery duration and update the total seconds
+  for (const delivery of deliveries) {
+    const [hours, minutes, secs] = delivery.split(":");
+    seconds += +hours * 3600 + +minutes * 60 + +secs;
+  }
 
-  // Convert remaining time to HH:mm:ss format
-  const hours = Math.floor(Math.abs(remainingSeconds) / 3600);
-  const minutes = Math.floor((Math.abs(remainingSeconds) % 3600) / 60);
-  const seconds = Math.abs(remainingSeconds) % 60;
+  // Determine sign for remaining time (negative if exceeding 07:00:00, otherwise positive)
+  const sign = seconds < 0 ? "-" : "";
+  seconds = Math.abs(seconds);
 
-  // Format the result
-  const result =
-    (remainingSeconds >= 0 ? "" : "-") +
-    `${hours.toString().padStart(2, "0")}:${minutes
-      .toString()
-      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  // Calculate hours, minutes, and seconds from the remaining seconds
+  const hours = Math.floor(seconds / 3600)
+    .toString()
+    .padStart(2, "0");
 
-  return result;
+  seconds %= 3600;
+
+  const minutes = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+
+  seconds %= 60;
+
+  const secs = seconds.toString().padStart(2, "0");
+
+  // Return formatted result with sign, hours, minutes and seconds
+  return `${sign}${hours}:${minutes}:${secs}`;
 }
