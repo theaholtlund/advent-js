@@ -1,7 +1,7 @@
 // Advent JavaScript 2023, Day 2
 
 // Challenge: We start the factory
-// Objective: Write function that, given gifts and available materials, returns list of gifts that can be made
+// Objective: Given gifts and available materials, return list of gifts that can be made
 function manufacture(gifts, materials) {
   const giftsMade = [];
 

@@ -1,7 +1,7 @@
 // Advent JavaScript 2023, Day 4
 
 // Challenge: Turn the parentheses around
-// Objective: Reverse the characters within each pair of parentheses, also removing the parentheses
+// Objective: Reverse characters within each pair of parentheses, and remove the parentheses
 function decode(message) {
   // Stack to keep track of characters before nested parentheses
   // Result string to store the current characters being processed
