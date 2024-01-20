@@ -1,3 +1,5 @@
+// Advent JavaScript 2023, Day 16
+
 /**
  * Challenge: Friday deployment
  * Objective: Convert tree array into object, handling null values and maintaining relationships
