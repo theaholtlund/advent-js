@@ -4,6 +4,8 @@
  * Challenge: Optimising the rental
  * Objective: Merge overlapping time intervals for sled rentals and return sorted array of optimised intervals
  *
+ * @param {Array<Array<number>>} intervals - Array of time intervals, each represented by subarray [start, end]
+ * @returns {Array<Array<number>>} - Sorted array of merged and optimised time intervals
  */
 function optimizeIntervals(intervals) {
   // Check if there are 1 or fewer intervals, no merging needed
