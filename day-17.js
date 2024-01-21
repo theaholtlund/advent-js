@@ -17,21 +17,18 @@ function optimizeIntervals(intervals) {
   // Initialise result array with the first interval
   const mergedIntervals = [intervals[0]];
 
-  // Iterate through the sorted intervals
   for (let i = 1; i < intervals.length; i++) {
-    const currentInterval = intervals[i];
-    const lastMergedInterval = mergedIntervals[mergedIntervals.length - 1];
+    // Destructure current and previous interval for better readability
+    const [start, end] = intervals[i];
+    const [prevStart, prevEnd] = mergedIntervals[mergedIntervals.length - 1];
 
     // Check for overlapping intervals
-    if (currentInterval[0] <= lastMergedInterval[1]) {
-      // Overlapping intervals, merge them by updating the end time
-      lastMergedInterval[1] = Math.max(
-        lastMergedInterval[1],
-        currentInterval[1]
-      );
+    if (start <= prevEnd) {
+      // Merge overlapping intervals by updating the end time directly
+      mergedIntervals[mergedIntervals.length - 1][1] = Math.max(prevEnd, end);
     } else {
-      // Non-overlapping intervals, add to the result array
-      mergedIntervals.push(currentInterval);
+      // Non-overlapping intervals, add a new interval to the result array
+      mergedIntervals.push([start, end]);
     }
   }
 
