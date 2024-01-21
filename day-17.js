@@ -6,6 +6,30 @@
  *
  */
 function optimizeIntervals(intervals) {
-  // Add code here
-  return [];
+  if (intervals.length <= 1) {
+    return intervals;
+  }
+
+  // Sort intervals based on the start time
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  const mergedIntervals = [intervals[0]];
+
+  for (let i = 1; i < intervals.length; i++) {
+    const currentInterval = intervals[i];
+    const lastMergedInterval = mergedIntervals[mergedIntervals.length - 1];
+
+    if (currentInterval[0] <= lastMergedInterval[1]) {
+      // Overlapping intervals, merge them
+      lastMergedInterval[1] = Math.max(
+        lastMergedInterval[1],
+        currentInterval[1]
+      );
+    } else {
+      // Non-overlapping intervals, add to result
+      mergedIntervals.push(currentInterval);
+    }
+  }
+
+  return mergedIntervals;
 }
