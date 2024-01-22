@@ -2,7 +2,7 @@
 
 /**
  * Challenge: The digital clock
- * Objective: Create visual representation of 'HH:MM' time on digital clock with specific asterisk and blank space patterns
+ * Objective: Create visual representation of 'HH:MM' time on a digital clock with specific asterisk and blank space patterns
  *
  * @param {string} time - Time in 'HH:MM' format
  * @returns {Array<Array<string>>} - Array of arrays representing the visual clock
@@ -102,14 +102,16 @@ function drawClock(time) {
     ":": [[" "], [" "], ["*"], [" "], ["*"], [" "], [" "]],
   };
 
-  const result = [];
-  for (let i = 0; i < 7; i++) {
-    const line = [];
-    for (const char of time.split("")) {
-      line.push(...timeChars[char][i], " ");
+  const result = Array(7)
+    .fill(null)
+    .map(() => []);
+
+  for (const char of time) {
+    if (char in timeChars) {
+      timeChars[char].forEach((row, index) => result[index].push(...row, " "));
     }
-    line.pop(); // Remove the extra space at the end of each line
-    result.push(line);
   }
+
+  result.forEach((row) => row.pop()); // Remove the extra space at the end of each line
   return result;
 }
