@@ -4,14 +4,15 @@
  * Challenge: Face the sabotage
  * Objective: Modify a matrix, replacing safe cells with count of adjacent sabotaged toys
  *
- * @param {Array<Array<string>>} store - The input matrix representing Santa's toy warehouse
- * @returns {Array<Array<string>>} - The modified matrix with counts of adjacent sabotaged toys
+ * @param {Array<Array<string>>} store - Input matrix representing Santa's toy warehouse
+ * @returns {Array<Array<string>>} - Modified matrix with counts of adjacent sabotaged toys
  */
 function revealSabotage(store) {
   const rows = store.length;
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < store[i].length; j++) {
+      // Check if the current cell is not a sabotaged toy
       if (store[i][j] !== "*") {
         let count = 0;
 
@@ -22,6 +23,7 @@ function revealSabotage(store) {
             y <= Math.min(j + 1, store[i].length - 1);
             y++
           ) {
+            // Increment count if adjacent cell contains a sabotaged toy
             if (store[x][y] === "*") {
               count++;
             }
@@ -36,5 +38,6 @@ function revealSabotage(store) {
     }
   }
 
+  // Return the modified matrix
   return store;
 }
