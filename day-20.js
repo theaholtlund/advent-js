@@ -8,44 +8,37 @@
  * @return {number[][]} - The adjusted matrix
  */
 function distributeGifts(weights) {
-  const numRows = weights.length;
-  const numCols = weights[0].length;
-
-  function getNeighbors(row, col) {
-    const neighbors = [];
-    if (row > 0) neighbors.push(weights[row - 1][col]);
-    if (row < numRows - 1) neighbors.push(weights[row + 1][col]);
-    if (col > 0) neighbors.push(weights[row][col - 1]);
-    if (col < numCols - 1) neighbors.push(weights[row][col + 1]);
-    return neighbors;
-  }
-
-  // Iterate through the matrix and update each element
+  // Result matrix to store the adjusted values
   const result = [];
-  for (let i = 0; i < numRows; i++) {
-    const newRow = [];
-    for (let j = 0; j < numCols; j++) {
-      const currentElement = weights[i][j];
-      if (currentElement === null) {
-        // Handle null values by replacing them with the average of neighbors
-        const neighbors = getNeighbors(i, j);
-        const sum = neighbors.reduce(
-          (acc, val) => (val !== null ? acc + val : acc),
-          0
-        );
-        const average = sum / neighbors.filter((val) => val !== null).length;
-        newRow.push(Math.round(average));
-      } else {
-        // Update the element with the rounded average of itself and neighbors
-        const neighbors = getNeighbors(i, j);
-        const average =
-          (currentElement + neighbors.reduce((acc, val) => acc + val, 0)) /
-          (neighbors.length + 1);
-        newRow.push(Math.round(average));
-      }
+
+  for (let y = 0; y < weights.length; y++) {
+    // Current row and neighboring rows
+    const weightRow = weights[y];
+    const topRow = weights[y - 1] || [];
+    const bottomRow = weights[y + 1] || [];
+
+    // Initialise the result row
+    result[y] = [];
+
+    for (let x = 0; x < weightRow.length; x++) {
+      // Current weight and its non-diagonal neighbors
+      const currentWeight = weightRow[x];
+      const top = topRow[x] || 0;
+      const bottom = bottomRow[x] || 0;
+      const left = weightRow[x - 1] || 0;
+      const right = weightRow[x + 1] || 0;
+
+      // Count the number of valid neighbors
+      const divisor = !!currentWeight + !!top + !!bottom + !!left + !!right;
+
+      // Calculate the rounded average and update the result matrix
+      const newValue = Math.round(
+        (currentWeight + top + bottom + left + right) / divisor
+      );
+      result[y][x] = newValue;
     }
-    result.push(newRow);
   }
 
+  // Return the adjusted matrix
   return result;
 }
