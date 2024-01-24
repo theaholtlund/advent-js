@@ -4,6 +4,8 @@
  * Challenge: Distribute the weight
  * Objective: Adjust distribution matrix by replacing each element with rounded average of itself and its non-diagonal neighbors
  *
+ * @param {number[][]} weights - The matrix representing the distribution of toys
+ * @return {number[][]} - The adjusted matrix
  */
 function distributeGifts(weights) {
   const numRows = weights.length;
