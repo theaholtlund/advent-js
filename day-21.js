@@ -6,30 +6,29 @@
  *
  */
 function findBalancedSegment(message) {
-  let longest = [];
+  let longestSegment = [0, 0];
 
-  // Iterate through each element in the binary message
   message.forEach((binary, i) => {
     let ones = binary;
     let zeros = +(binary === 0);
-    let current = [i, i];
+    let currentSegment = [i, i];
 
-    // Check for balanced segments in the remaining part of the message
     message.slice(i + 1).forEach((number, j) => {
       ones += number;
       zeros += +(number === 0);
 
       if (ones === zeros) {
-        current[1] = j + i + 1;
+        currentSegment[1] = j + i + 1;
       }
     });
 
-    // Update the longest segment if the current one is longer
-    if (current[1] - current[0] > longest[1] - longest[0]) {
-      longest = [...current];
+    if (
+      currentSegment[1] - currentSegment[0] >
+      longestSegment[1] - longestSegment[0]
+    ) {
+      longestSegment = [...currentSegment];
     }
   });
 
-  // Return the longest balanced segment or an empty array if none is found
-  return longest[1] === 0 ? [] : longest;
+  return longestSegment[1] === 0 ? [] : longestSegment;
 }
