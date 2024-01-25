@@ -2,8 +2,10 @@
 
 /**
  * Challenge: Binary message
- * Objective: Pinpoint longest segment in a binary message array with equal count of 0s and 1s, aiding elves in decoding messages from Mars for potential communication via https://mars.codes
+ * Objective: Pinpoint longest segment in binary message array with equal count of 0s and 1s, helping elves decoding messages
  *
+ * @param {number[]} message - The binary message array to analyze
+ * @returns {number[]} The longest balanced segment or an empty array if none is found
  */
 function findBalancedSegment(message) {
   // Initialise variables to track the longest balanced segment
