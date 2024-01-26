@@ -4,6 +4,8 @@
  * Challenge: Programming language
  * Objective: Create a compiler for Santa.js, a symbol-based language, modifying a counter value
  *
+ * @param {string} code - The Santa.js code to be compiled
+ * @returns {number} - The result of executing the compiled code
  */
 function compile(code) {
   let counter = 0;
