@@ -7,6 +7,7 @@
  * @returns {string[]} - List of gifts that can be made with the available materials
  */
 function manufacture(gifts, materials) {
+  // Initialise array to store the gifts that can be made
   const giftsMade = [];
 
   for (const gift of gifts) {
@@ -14,7 +15,8 @@ function manufacture(gifts, materials) {
 
     for (let i = 0; i < gift.length; i++) {
       if (!materials.includes(gift[i])) {
-        canMakeGift = false;
+        // Check if all materials for the current gift are available
+        canMakeGift = false; // If any material is missing, set the flag to false
         break;
       }
     }
@@ -24,5 +26,6 @@ function manufacture(gifts, materials) {
     }
   }
 
+  // Return the list of gifts that can be made
   return giftsMade;
 }
