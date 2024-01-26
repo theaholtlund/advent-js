@@ -6,6 +6,28 @@
  *
  */
 function compile(code) {
-  // Add code here
-  return 0;
+  let counter = 0;
+  let returnIndex = null;
+
+  for (let i = 0; i < code.length; i++) {
+    counter += (code[i] === "+") - (code[i] === "-");
+    counter *= (code[i] === "*") + 1;
+    returnIndex = code[i] === "%" ? i : returnIndex;
+
+    if (returnIndex !== null && code[i] === "<") {
+      i = returnIndex;
+      returnIndex = null;
+    }
+
+    if (counter <= 0 && code[i] === "¿") {
+      const endIndex = code.indexOf("?", i + 1);
+      if (endIndex !== -1) {
+        i = endIndex;
+      } else {
+        break;
+      }
+    }
+  }
+
+  return counter;
 }
