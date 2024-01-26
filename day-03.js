@@ -1,7 +1,13 @@
 // Advent JavaScript 2023, Day 3
 
-// Challenge: The naughty elf
-// Objective: Identify and return the first extra step that was added or removed in the chain
+/**
+ * Challenge: The naughty elf
+ * Objective: Identify and return the first extra step that was added or removed in the chain
+ *
+ * @param {string} original - The original chain of steps
+ * @param {string} modified - The modified chain of steps with an extra step added or removed
+ * @returns {string} - The first extra step that was added or removed
+ */
 function findNaughtyStep(original, modified) {
   const minLength = Math.min(original.length, modified.length);
 

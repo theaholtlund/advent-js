@@ -1,7 +1,12 @@
 // Advent JavaScript 2023, Day 1
 
-// Challenge: First gift repreated
-// Objective: Find first repeated identification number, where second occurrence has smallest index
+/**
+ * Challenge: First gift repeated
+ * Objective: Find first repeated identification number, where second occurrence has smallest index
+ *
+ * @param {number[]} gifts - Array of identification numbers
+ * @returns {number} - The first repeated identification number, or -1 if none is found
+ */
 function findFirstRepeated(gifts) {
   const indices = {};
 

@@ -1,7 +1,11 @@
-// Advent JavaScript 2023, Day 2
-
-// Challenge: We start the factory
-// Objective: Given gifts and available materials, return list of gifts that can be made
+/**
+ * Challenge: We start the factory
+ * Objective: Given gifts and available materials, return list of gifts that can be made
+ *
+ * @param {string[]} gifts - Array of gifts to be manufactured
+ * @param {string[]} materials - Array of available materials
+ * @returns {string[]} - List of gifts that can be made with the available materials
+ */
 function manufacture(gifts, materials) {
   const giftsMade = [];
 
