@@ -6,6 +6,30 @@
  *
  */
 function organizeChristmasDinner(dishes) {
-  // Add code here
-  return [];
+  const ingredientMap = {};
+
+  // Populate ingredient map
+  for (const dish of dishes) {
+    const [dishName, ...ingredients] = dish;
+    for (const ingredient of ingredients) {
+      if (!ingredientMap[ingredient]) {
+        ingredientMap[ingredient] = new Set();
+      }
+      ingredientMap[ingredient].add(dishName);
+    }
+  }
+
+  // Filter out ingredients with less than 2 dishes
+  const result = [];
+  for (const ingredient in ingredientMap) {
+    if (ingredientMap[ingredient].size > 1) {
+      const sortedDishes = Array.from(ingredientMap[ingredient]).sort();
+      result.push([ingredient, ...sortedDishes]);
+    }
+  }
+
+  // Sort the result
+  result.sort((a, b) => a[0].localeCompare(b[0]));
+
+  return result;
 }
