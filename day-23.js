@@ -5,7 +5,7 @@
  * Objective: Group Christmas dishes by shared ingredients, ensuring alphabetical ordering and uniqueness in the menu
  *
  * @param {Array<Array<string>>} dishes - Array of Christmas dishes where each element is an array starting with the dish name followed by its ingredients
- * @returns {Array<Array<string>>} - Array of arrays where the first position is the name of the ingredient and the rest are the names of the dishes containing that ingredient, sorted alphabetically
+ * @returns {Array<Array<string>>} - Array of arrays where first position is the name of the ingredient and the rest are names of dishes containing that ingredient
  */
 function organizeChristmasDinner(dishes) {
   const ingredientMap = {};
