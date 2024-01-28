@@ -4,6 +4,9 @@
  * Challenge: Jump on the stairs
  * Objective: List all possible jump sequences to ascend a staircase within a given maximum, in ascending order
  *
+ * @param {number} steps - The total number of steps in the staircase.
+ * @param {number} maxJump - The maximum number of steps that can be jumped in a single jump.
+ * @returns {number[][]} - An array of arrays representing all possible jump sequences.
  */
 function getStaircasePaths(steps, maxJump) {
   const result = [];
