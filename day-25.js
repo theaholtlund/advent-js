@@ -8,13 +8,12 @@
  * @returns {number} The total travel distance in kilometers
  */
 function travelDistance(map) {
-  // Split the map into rows
+  // Split map into rows, initialise Santa's position and dictionary to store children's positions
   const rows = map.split("\n");
-  // Initialise Santa's initial position and a dictionary to store children's positions
   let santaPosition = { x: -1, y: -1 };
   const childrenPosition = {};
 
-  // Parse the map to find Santa's and children's positions
+  // Parse map to find Santa's and children's positions
   rows.forEach((row, y) => {
     row.split("").forEach((char, x) => {
       if (char === "S") {
@@ -25,14 +24,14 @@ function travelDistance(map) {
     });
   });
 
-  // Function to calculate distance between two positions
+  // Calculate distance between two positions
   function calculateDistance(position1, position2) {
     return (
       Math.abs(position1.x - position2.x) + Math.abs(position1.y - position2.y)
     );
   }
 
-  // Initialise the total distance
+  // Initialise total distance
   let totalDistance = 0;
 
   // Iterate over children positions and calculate distances
@@ -40,7 +39,7 @@ function travelDistance(map) {
     const childPosition = childrenPosition[i];
     if (childPosition) {
       totalDistance += calculateDistance(santaPosition, childPosition);
-      santaPosition = childPosition; // Update Santa's position for the next iteration
+      santaPosition = childPosition;
     }
   }
 
