@@ -1,11 +1,11 @@
-# Advent of JS Project
+# 🎅🏼AdventJS Calendar Project🎅🏼
 
-Hobby project with various solutions to the Advent JS 2023 challenges. Challenge for each day is listed in individual files, before submitted on the webpage. Contents are, unfortunately, updated a bit later than the actual advent days due to limited availability to work on this. However, as wise people say—better late than never!
+Hobby project with various solutions to the <a href="https://adventjs.dev">AdventJS</a> 2023 challenges. Challenge for each day listed in individual files, and submitted on the AdventJS website. Contents were, unfortunately, updated a bit later than the actual challenge days due to limited availability to work on this. However, as wise people say — better late than never :)
 
 ## Installation
 
 1. Clone the repository.
-2. Change into the project directory: `cd advent-of-js`.
+2. Change into the project directory: `cd advent-js`.
 3. Install dependencies: `npm install`.
 
 ## Usage
