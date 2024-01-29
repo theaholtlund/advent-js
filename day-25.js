@@ -6,6 +6,36 @@
  *
  */
 function travelDistance(map) {
-  // Add code here
-  return 0;
+  const rows = map.split("\n");
+  let santaPosition;
+  const childrenPosition = {};
+
+  rows.forEach((row, y) => {
+    for (let x = 0; x < row.length; x++) {
+      const char = row[x];
+      if (char === "S") {
+        santaPosition = { x, y };
+      } else if (!isNaN(parseInt(char))) {
+        childrenPosition[char] = { x, y };
+      }
+    }
+  });
+
+  function calculateDistance(position1, position2) {
+    return (
+      Math.abs(position1.x - position2.x) + Math.abs(position1.y - position2.y)
+    );
+  }
+
+  let totalDistance = 0;
+
+  for (let i = 1; i <= Object.keys(childrenPosition).length; i++) {
+    const childPosition = childrenPosition[i];
+    if (childPosition) {
+      totalDistance += calculateDistance(santaPosition, childPosition);
+      santaPosition = childPosition;
+    }
+  }
+
+  return totalDistance;
 }
