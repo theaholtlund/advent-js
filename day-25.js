@@ -7,18 +7,17 @@
  */
 function travelDistance(map) {
   const rows = map.split("\n");
-  let santaPosition;
+  let santaPosition = { x: -1, y: -1 };
   const childrenPosition = {};
 
   rows.forEach((row, y) => {
-    for (let x = 0; x < row.length; x++) {
-      const char = row[x];
+    row.split("").forEach((char, x) => {
       if (char === "S") {
         santaPosition = { x, y };
       } else if (!isNaN(parseInt(char))) {
         childrenPosition[char] = { x, y };
       }
-    }
+    });
   });
 
   function calculateDistance(position1, position2) {
