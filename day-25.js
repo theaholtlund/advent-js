@@ -4,6 +4,8 @@
  * Challenge: Calculating distances
  * Objective: Compute total travel distance to deliver gifts, given sequential positions on a map where each move equals 1 km
  *
+ * @param {string} map - A multiline string representing map with sequential positions of Santa and children
+ * @returns {number} The total travel distance in kilometers
  */
 function travelDistance(map) {
   // Split the map into rows
